@@ -1,0 +1,29 @@
+body {
+    background: #f69a73;
+}
+h1{
+    color: wheat;
+}
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    background: wheat;
+    max-width: 70%;
+    width: 70%;
+    border-collapse: collapse;
+    text-align: left;
+}
+th {
+    font-weight: normal;
+    color: lightcoral;
+    border-bottom: 2px solid #E9EFF6;
+    padding: 10px 8px;
+}
+td {
+    color: lightcoral;
+    padding: 9px 8px;
+    transition: .3s linear;
+}
+tr:hover td {
+    color: lightcoral;
+}
