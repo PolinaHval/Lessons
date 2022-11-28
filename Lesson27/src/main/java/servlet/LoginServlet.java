@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Optional;
 
 @Slf4j
@@ -31,19 +32,19 @@ public class LoginServlet extends HttpServlet {
   }
 
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     final String login = request.getParameter("login");
     final String password = request.getParameter("password");
     Optional<User> user = userService.getUser(login);
 
     if (user.isPresent() && user.get().getPassword().equals(password)) {
-      request.getSession().setAttribute("loggedIn", true);
-      log.info("User {} logged in", login);
+      request.getSession().setAttribute("loggedInUserId", user.get().getUserId());
       response.sendRedirect("users");
     } else {
-      response.sendRedirect("registration");
+      PrintWriter out = response.getWriter();
+      out.println("Username or password error");
+      getServletContext().getRequestDispatcher("registration").forward(request, response);
     }
   }
 }
