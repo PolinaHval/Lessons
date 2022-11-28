@@ -21,7 +21,6 @@
         <checkstyle.version>10.3.3</checkstyle.version>
         <checkstyle.maven.plugin.version>3.2.0</checkstyle.maven.plugin.version>
         <checkstyle.config.location>codequality/checkstyle.xml</checkstyle.config.location>
-        <!--        <pmd.maven.plugin.version>3.17.0</pmd.maven.plugin.version>-->
         <spotbugs.maven.plugin.version>4.7.1.1</spotbugs.maven.plugin.version>
     </properties>
 
@@ -152,29 +151,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-pmd-plugin</artifactId>-->
-            <!--                <version>${pmd.maven.plugin.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <linkXRef>false</linkXRef>-->
-            <!--                    <sourceEncoding>UTF-8</sourceEncoding>-->
-            <!--                    <includeTests>false</includeTests>-->
-            <!--                    <failOnViolation>true</failOnViolation>-->
-            <!--                    <rulesets>-->
-            <!--                        <ruleset>codequality/pmd-ruleset.xml</ruleset>-->
-            <!--                    </rulesets>-->
-            <!--                </configuration>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>pmd-validate</id>-->
-            <!--                        <phase>validate</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>check</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>

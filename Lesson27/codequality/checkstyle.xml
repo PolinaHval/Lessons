@@ -22,15 +22,15 @@
 
     <module name="SuppressWarningsFilter"/>
     <module name="TreeWalker">
-        <module name="SuppressWarningsHolder" />
+        <module name="SuppressWarningsHolder"/>
         <!-- Javadoc -->
         <module name="JavadocType">
             <property name="severity" value="warning"/>
         </module>
         <module name="JavadocMethod">
-            <property name="allowMissingReturnTag" value="true"/> <!-- Sometimes its just overkill -->
-            <property name="allowMissingParamTags" value="true"/> <!-- Sometimes its just overkill -->
-            <property name="tokens" value="METHOD_DEF"/> <!-- Constructors don't always need Javadoc -->
+            <property name="allowMissingReturnTag" value="true"/>
+            <property name="allowMissingParamTags" value="true"/>
+            <property name="tokens" value="METHOD_DEF"/>
             <property name="severity" value="warning"/>
         </module>
         <module name="JavadocStyle">
