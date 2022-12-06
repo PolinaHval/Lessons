@@ -2,8 +2,6 @@ package listener;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import service.FriendService;
-import service.RequestFriendService;
 import service.UserService;
 
 import javax.servlet.ServletContextEvent;
@@ -19,12 +17,7 @@ public class DependencyInitializationContextListener implements ServletContextLi
 
     final ApplicationContext context = new ClassPathXmlApplicationContext("lesson32.xml");
     final UserService userService = context.getBean(UserService.class);
-    final FriendService friendService = context.getBean(FriendService.class);
-    final RequestFriendService requestFriendService = context.getBean(RequestFriendService.class);
     sce.getServletContext().setAttribute("userService", userService);
-    sce.getServletContext().setAttribute("friendService", friendService);
-    sce.getServletContext().setAttribute("requestFriendService", requestFriendService);
-
   }
 }
 

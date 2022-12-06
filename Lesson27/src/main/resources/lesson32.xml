@@ -20,19 +20,4 @@
         <constructor-arg index="0" ref="userRepository"/>
     </bean>
 
-    <bean id="requestFriendRepository" class="repository.JdbcRequestFriendRepository">
-        <constructor-arg index="0" ref="connection"/>
-    </bean>
-
-    <bean id="requestFriendService" class="service.RequestFriendService">
-        <constructor-arg index="0" ref="requestFriendRepository"/>
-    </bean>
-
-    <bean id="friendRepository" class="repository.JdbcFriendRepository">
-        <constructor-arg index="0" ref="connection"/>
-    </bean>
-
-    <bean id="friendService" class="service.FriendService">
-        <constructor-arg index="0" ref="friendRepository"/>
-    </bean>
 </beans>

@@ -1,21 +1,20 @@
 package service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import model.User;
 import repository.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@Service
+@RequiredArgsConstructor
 public class UserService {
 
-  UserRepository userRepository;
-
-  public UserService(UserRepository userRepository) {
-    this.userRepository = userRepository;
-  }
-
+  private final UserRepository userRepository;
 
   public List<User> findUsers() {
     return userRepository.findUsers();
@@ -23,7 +22,7 @@ public class UserService {
 
   public void createUser(String login, String password) {
     log.info("Creating user {}", login);
-    if (userRepository.getUserLogin(login).isPresent()) {
+    if (userRepository.getUser(login).isPresent()) {
       throw new RuntimeException("User already exists");
     }
     if (password.isEmpty()) {
@@ -35,7 +34,7 @@ public class UserService {
   }
 
   public Optional<User> getUser(String login) {
-    return userRepository.getUserLogin(login);
+    return userRepository.getUser(login);
   }
 
   public List<User> getUsersOfAllOutgoingRequests(int senderId) {

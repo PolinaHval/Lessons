@@ -1,7 +1,9 @@
 package repository;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import model.User;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@Repository
+@RequiredArgsConstructor
 public class JdbcUserRepository implements UserRepository {
 
   private final Connection connection;
@@ -21,15 +25,9 @@ public class JdbcUserRepository implements UserRepository {
   private static final String CREATE_USER = "insert into users (login, password) values (?, ?)";
   private static final String GET_LOGIN_USER = "select login, password, id from users where login = ?";
 
-
-  public JdbcUserRepository(Connection connection) {
-    this.connection = connection;
-  }
-
   @Override
   public List<User> findUsers() {
-    try {
-      Statement statement = connection.createStatement();
+    try (Statement statement = connection.createStatement()) {
       ResultSet resultSet = statement.executeQuery(FIND_USERS);
       final List<User> users = new ArrayList<>();
       while (resultSet.next()) {
@@ -47,8 +45,7 @@ public class JdbcUserRepository implements UserRepository {
 
   @Override
   public void createUser(String login, String password) {
-    try {
-      PreparedStatement statement = connection.prepareStatement(CREATE_USER);
+    try (PreparedStatement statement = connection.prepareStatement(CREATE_USER)) {
       statement.setString(1, login);
       statement.setString(2, password);
       statement.execute();
@@ -58,7 +55,7 @@ public class JdbcUserRepository implements UserRepository {
   }
 
   @Override
-  public Optional<User> getUserLogin(String login) {
+  public Optional<User> getUser(String login) {
     try (PreparedStatement statement = connection.prepareStatement(GET_LOGIN_USER)) {
       statement.setString(1, login);
       ResultSet resultSet = statement.executeQuery();
@@ -76,7 +73,8 @@ public class JdbcUserRepository implements UserRepository {
   @Override
   public List<User> getIncomingRequests(int recipientId) {
     ResultSet resultSet;
-    try (PreparedStatement statement = connection.prepareStatement("select inviter_id, user_id from invitations where user_id = ?")) {
+    try (PreparedStatement statement = connection.prepareStatement(
+        "select inviter_id, user_id from invitations where user_id = ?")) {
       statement.setInt(1, recipientId);
 
       List<User> userList = new ArrayList<>();
@@ -94,7 +92,8 @@ public class JdbcUserRepository implements UserRepository {
 
   @Override
   public List<User> getOutcomingRequests(int senderId) {
-    try (PreparedStatement statement = connection.prepareStatement("select inviter_id, user_id from invitations where inviter_id = ?")) {
+    try (PreparedStatement statement = connection.prepareStatement(
+        "select inviter_id, user_id from invitations where inviter_id = ?")) {
       statement.setInt(1, senderId);
 
       List<User> userList = new ArrayList<>();
@@ -114,7 +113,8 @@ public class JdbcUserRepository implements UserRepository {
 
   @Override
   public List<User> getAllFriends(int userId) {
-    try (PreparedStatement statement = connection.prepareStatement("select user_id, friend_id from friends where user_id = ?")) {
+    try (PreparedStatement statement = connection.prepareStatement(
+        "select user_id, friend_id from friends where user_id = ?")) {
       statement.setInt(1, userId);
       statement.setInt(2, userId);
 
@@ -129,6 +129,5 @@ public class JdbcUserRepository implements UserRepository {
     } catch (SQLException e) {
       return new ArrayList<>();
     }
-
   }
 }

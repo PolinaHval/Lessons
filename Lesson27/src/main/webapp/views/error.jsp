@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Access denied</title>
+    <title>Error</title>
 </head>
 <body>
-Access denied
+${message}
 </body>
 </html>
