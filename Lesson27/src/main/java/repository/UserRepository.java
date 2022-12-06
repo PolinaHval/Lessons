@@ -10,5 +10,11 @@ public interface UserRepository {
 
   void createUser(String login, String password);
 
-  Optional<User> getUser(String login);
+  Optional<User> getUserLogin(String login);
+
+  List<User> getIncomingRequests(int recipientId);
+
+  List<User> getOutcomingRequests(int senderId);
+
+  List<User> getAllFriends(int userId);
 }

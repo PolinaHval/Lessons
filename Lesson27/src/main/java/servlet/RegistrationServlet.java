@@ -32,14 +32,13 @@ public class RegistrationServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
     String login = req.getParameter("login");
     String password = req.getParameter("password");
+
     try {
       userService.createUser(login, password);
     } catch (Exception ex) {
-      log.error("User not created");
       resp.sendRedirect("registration?error=" + ex.getMessage());
       return;
     }
-    log.info("User {} registered", login);
     getServletContext().getRequestDispatcher("/success.jsp").forward(req, resp);
   }
 }
