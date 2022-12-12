@@ -6,6 +6,9 @@
     <artifactId>Lessons</artifactId>
     <modules>
         <module>Lesson27</module>
+        <module>Lesson33</module>
+        <module>Lesson34</module>
+        <module>Lesson35</module>
     </modules>
     <groupId>org.example</groupId>
     <version>1.0-SNAPSHOT</version>
@@ -18,9 +21,9 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-        <checkstyle.version>10.3.3</checkstyle.version>
-        <checkstyle.maven.plugin.version>3.2.0</checkstyle.maven.plugin.version>
-        <checkstyle.config.location>codequality/checkstyle.xml</checkstyle.config.location>
+        <!--        <checkstyle.version>10.3.3</checkstyle.version>-->
+        <!--        <checkstyle.maven.plugin.version>3.2.0</checkstyle.maven.plugin.version>-->
+        <!--        <checkstyle.config.location>codequality/checkstyle.xml</checkstyle.config.location>-->
         <spotbugs.maven.plugin.version>4.7.1.1</spotbugs.maven.plugin.version>
     </properties>
 
@@ -119,38 +122,38 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>9.7.0</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.maven.plugin.version}</version>
-                <configuration>
-                    <maxAllowedViolations>0</maxAllowedViolations>
-                    <failsOnError>true</failsOnError>
-                    <logViolationCountToConsole>true</logViolationCountToConsole>
-                    <consoleOutput>true</consoleOutput>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>${checkstyle.version}</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>checkstyle-validate</id>
-                        <phase>validate</phase>
-                        <configuration>
-                            <inputEncoding>UTF-8</inputEncoding>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                            <logViolationCountToConsole>true</logViolationCountToConsole>
-                        </configuration>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+            <!--                <version>${checkstyle.maven.plugin.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <maxAllowedViolations>0</maxAllowedViolations>-->
+            <!--                    <failsOnError>true</failsOnError>-->
+            <!--                    <logViolationCountToConsole>true</logViolationCountToConsole>-->
+            <!--                    <consoleOutput>true</consoleOutput>-->
+            <!--                </configuration>-->
+            <!--                <dependencies>-->
+            <!--                    <dependency>-->
+            <!--                        <groupId>com.puppycrawl.tools</groupId>-->
+            <!--                        <artifactId>checkstyle</artifactId>-->
+            <!--                        <version>${checkstyle.version}</version>-->
+            <!--                    </dependency>-->
+            <!--                </dependencies>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>checkstyle-validate</id>-->
+            <!--                        <phase>validate</phase>-->
+            <!--                        <configuration>-->
+            <!--                            <inputEncoding>UTF-8</inputEncoding>-->
+            <!--                            <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
+            <!--                            <logViolationCountToConsole>true</logViolationCountToConsole>-->
+            <!--                        </configuration>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
