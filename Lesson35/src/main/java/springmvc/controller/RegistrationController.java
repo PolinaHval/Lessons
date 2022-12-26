@@ -1,9 +1,6 @@
-package com.springmvc.controller;
+package springmvc.controller;
 
-import com.springmvc.dto.CreateUserDto;
-import com.springmvc.model.User;
-import com.springmvc.service.UserService;
-import com.springmvc.session.AuthContext;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -13,7 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import springmvc.dto.CreateUserDto;
+import springmvc.model.User;
+import springmvc.service.UserService;
+import springmvc.session.AuthContext;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -35,9 +35,7 @@ public class RegistrationController {
 
   @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
   protected String createUser(@Valid @ModelAttribute("dto") final CreateUserDto dto,
-                              final BindingResult result,
-                              final Model model
-  ) {
+                              final BindingResult result, final Model model) {
     if (!result.hasErrors()) {
       userService.createUser(dto.getLogin(), dto.getPassword());
       authContext.setAuthorized(true);

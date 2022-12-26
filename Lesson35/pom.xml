@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>Lessons</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>Lesson35</artifactId>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <checkstyle.version>10.3.3</checkstyle.version>
+        <spotbugs.maven.plugin.version>4.7.1.1</spotbugs.maven.plugin.version>
+        <checkstyle.maven.plugin.version>3.2.0</checkstyle.maven.plugin.version>
+        <checkstyle.config.location>codequality/checkstyle.xml</checkstyle.config.location>
+        <pmd.maven.plugin.version>3.17.0</pmd.maven.plugin.version>
+        <org.mockito.version>4.4.0</org.mockito.version>
+        <spring-context.version>5.3.23</spring-context.version>
+        <spring-boot-starter-web.version>2.7.5</spring-boot-starter-web.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.13.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.13.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf</artifactId>
+                <version>3.0.15.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.9.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.36</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-commons</artifactId>
+                <version>1.9.1</version>
+            </dependency>
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <version>1.12.14</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>3.4.1.Final</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.5.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.23.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.8.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.8.0</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>1.17.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>1.17.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>1.17.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bcrypt</artifactId>
+            <version>0.9.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>9.6.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
+            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-pmd-plugin</artifactId>-->
+            <!--                <version>${pmd.maven.plugin.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <linkXRef>false</linkXRef>-->
+            <!--                    <sourceEncoding>UTF-8</sourceEncoding>-->
+            <!--                    <includeTests>false</includeTests>-->
+            <!--                    <failOnViolation>true</failOnViolation>-->
+            <!--                    <rulesets>-->
+            <!--                        <ruleset>codequality/pmd-ruleset.xml</ruleset>-->
+            <!--                    </rulesets>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>pmd-validate</id>-->
+            <!--                        <phase>validate</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.maven.plugin.version}</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <failOnError>true</failOnError>
+                    <includeFilterFiles>codequality/spotbug.xml</includeFilterFiles>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>4.7.1</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-enforcer-plugin</artifactId>-->
+            <!--                <version>1.4.1</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>no-duplicate-declared-dependencies</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>enforce</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <rules>-->
+            <!--                                <banDuplicatePomDependencyVersions/>-->
+            <!--                                <dependencyConvergence/>-->
+            <!--                                <bannedDependencies>-->
+            <!--                                    <excludes>-->
+            <!--                                        <exclude>org.slf4j:slf4j-log4j12</exclude>-->
+            <!--                                        <exclude>org.slf4j:slf4j-jdk14</exclude>-->
+            <!--                                        <exclude>log4j:log4j</exclude>-->
+            <!--                                        <exclude>commons-logging:commons-logging</exclude>-->
+            <!--                                    </excludes>-->
+            <!--                                </bannedDependencies>-->
+            <!--                            </rules>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.7.1.1</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <includeFilterFile>whizbang/lib-filter.xml</includeFilterFile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
+
+        <!--    <properties>-->
+        <!--        <maven.compiler.source>11</maven.compiler.source>-->
+        <!--        <maven.compiler.target>11</maven.compiler.target>-->
+        <!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+        <!--        <spring-context.version>5.3.23</spring-context.version>-->
+        <!--        <spring-boot-starter-web.version>2.7.5</spring-boot-starter-web.version>-->
+        <!--    </properties>-->
+
+        <!--    <dependencyManagement>-->
+        <!--        <dependencies>-->
+        <!--            <dependency>-->
+        <!--                <groupId>org.junit.jupiter</groupId>-->
+        <!--                <artifactId>junit-jupiter-api</artifactId>-->
+        <!--                <version>5.9.1</version>-->
+        <!--            </dependency>-->
+        <!--            <dependency>-->
+        <!--                <groupId>org.slf4j</groupId>-->
+        <!--                <artifactId>slf4j-api</artifactId>-->
+        <!--                <version>1.7.36</version>-->
+        <!--            </dependency>-->
+        <!--            <dependency>-->
+        <!--                <groupId>org.junit.platform</groupId>-->
+        <!--                <artifactId>junit-platform-commons</artifactId>-->
+        <!--                <version>1.9.1</version>-->
+        <!--            </dependency>-->
+        <!--            <dependency>-->
+        <!--                <groupId>net.bytebuddy</groupId>-->
+        <!--                <artifactId>byte-buddy</artifactId>-->
+        <!--                <version>1.12.14</version>-->
+        <!--            </dependency>-->
+        <!--        </dependencies>-->
+        <!--    </dependencyManagement>-->
+
+        <!--    <dependencies>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.postgresql</groupId>-->
+        <!--            <artifactId>postgresql</artifactId>-->
+        <!--            <version>42.5.1</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate</groupId>-->
+        <!--            <artifactId>hibernate-core</artifactId>-->
+        <!--            <version>6.1.6.Final</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.projectlombok</groupId>-->
+        <!--            <artifactId>lombok</artifactId>-->
+        <!--            <version>1.18.24</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate.validator</groupId>-->
+        <!--            <artifactId>hibernate-validator</artifactId>-->
+        <!--            <version>6.0.13.Final</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.testcontainers</groupId>-->
+        <!--            <artifactId>testcontainers</artifactId>-->
+        <!--            <version>1.17.5</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.testcontainers</groupId>-->
+        <!--            <artifactId>junit-jupiter</artifactId>-->
+        <!--            <version>1.17.5</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.testcontainers</groupId>-->
+        <!--            <artifactId>postgresql</artifactId>-->
+        <!--            <version>1.17.5</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-core</artifactId>-->
+        <!--            <version>2.19.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.logging.log4j</groupId>-->
+        <!--            <artifactId>log4j-api</artifactId>-->
+        <!--            <version>2.19.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+        <!--            <artifactId>jackson-dataformat-yaml</artifactId>-->
+        <!--            <version>2.14.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>at.favre.lib</groupId>-->
+        <!--            <artifactId>bcrypt</artifactId>-->
+        <!--            <version>0.9.0</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.junit.jupiter</groupId>-->
+        <!--            <artifactId>junit-jupiter-engine</artifactId>-->
+        <!--            <version>5.9.0</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.assertj</groupId>-->
+        <!--            <artifactId>assertj-core</artifactId>-->
+        <!--            <version>3.23.1</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.mockito</groupId>-->
+        <!--            <artifactId>mockito-core</artifactId>-->
+        <!--            <version>4.8.0</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.mockito</groupId>-->
+        <!--            <artifactId>mockito-junit-jupiter</artifactId>-->
+        <!--            <version>4.8.0</version>-->
+        <!--            <scope>test</scope>-->
+        <!--            <exclusions>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>org.junit.jupiter</groupId>-->
+        <!--                    <artifactId>junit-jupiter-api</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-web</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-validation</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--    </dependencies>-->
+
+        <!--    <build>-->
+        <!--        <plugins>-->
+        <!--            <plugin>-->
+        <!--                <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                <artifactId>maven-war-plugin</artifactId>-->
+        <!--                <version>3.3.2</version>-->
+        <!--            </plugin>-->
+        <!--            <plugin>-->
+        <!--                <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+        <!--                <version>3.0.0-M7</version>-->
+        <!--            </plugin>-->
+        <!--            <plugin>-->
+        <!--                <groupId>com.github.spotbugs</groupId>-->
+        <!--                <artifactId>spotbugs-maven-plugin</artifactId>-->
+        <!--                <version>${spotbugs.maven.plugin.version}</version>-->
+        <!--                <configuration>-->
+        <!--                    <effort>Max</effort>-->
+        <!--                    <threshold>Low</threshold>-->
+        <!--                    <failOnError>true</failOnError>-->
+        <!--                    <includeFilterFiles>codequality/spotbug.xml</includeFilterFiles>-->
+        <!--                </configuration>-->
+        <!--                <dependencies>-->
+        <!--                    <dependency>-->
+        <!--                        <groupId>com.github.spotbugs</groupId>-->
+        <!--                        <artifactId>spotbugs</artifactId>-->
+        <!--                        <version>4.7.1</version>-->
+        <!--                    </dependency>-->
+        <!--                </dependencies>-->
+        <!--                <executions>-->
+        <!--                    <execution>-->
+        <!--                        <phase>package</phase>-->
+        <!--                        <goals>-->
+        <!--                            <goal>check</goal>-->
+        <!--                        </goals>-->
+        <!--                    </execution>-->
+        <!--                </executions>-->
+        <!--            </plugin>-->
+        <!--            &lt;!&ndash;            <plugin>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <artifactId>maven-enforcer-plugin</artifactId>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <version>1.4.1</version>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <executions>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    <execution>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        <id>no-duplicate-declared-dependencies</id>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        <goals>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                            <goal>enforce</goal>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        </goals>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        <configuration>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                            <rules>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                <banDuplicatePomDependencyVersions/>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                <dependencyConvergence/>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                <bannedDependencies>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                    <excludes>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash; This should not exist as it will force SLF4J calls to be delegated to log4j &ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>org.slf4j:slf4j-log4j12</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash; This should not exist as it will force SLF4J calls to be delegated to jul &ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>org.slf4j:slf4j-jdk14</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash;                                        &lt;!&ndash; Ensure only the slf4j binding for logback is on the classpath &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>log4j:log4j</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash;                                         As recommended from the slf4j guide, exclude commons-logging &ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>commons-logging:commons-logging</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                    </excludes>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                </bannedDependencies>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                            </rules>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        </configuration>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    </execution>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                </executions>&ndash;&gt;-->
+        <!--            &lt;!&ndash;            </plugin>&ndash;&gt;-->
+        <!--        </plugins>-->
+        <!--    </build>-->
+        <!--    <reporting>-->
+        <!--        <plugins>-->
+        <!--            <plugin>-->
+        <!--                <groupId>com.github.spotbugs</groupId>-->
+        <!--                <artifactId>spotbugs-maven-plugin</artifactId>-->
+        <!--                <version>4.7.1.1</version>-->
+        <!--                <configuration>-->
+        <!--                    <effort>Max</effort>-->
+        <!--                    <threshold>Low</threshold>-->
+        <!--                    <includeFilterFile>whizbang/lib-filter.xml</includeFilterFile>-->
+        <!--                </configuration>-->
+        <!--            </plugin>-->
+        <!--        </plugins>-->
+        <!--    </reporting>-->
+        <!--</project>-->
+
+        <!--    <properties>-->
+        <!--        <maven.compiler.source>11</maven.compiler.source>-->
+        <!--        <maven.compiler.target>11</maven.compiler.target>-->
+        <!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+        <!--        <spring-context.version>5.3.23</spring-context.version>-->
+        <!--        <spring-boot-starter-web.version>2.7.5</spring-boot-starter-web.version>-->
+        <!--    </properties>-->
+
+        <!--    <dependencyManagement>-->
+        <!--        <dependencies>-->
+        <!--            <dependency>-->
+        <!--                <groupId>org.junit.jupiter</groupId>-->
+        <!--                <artifactId>junit-jupiter-api</artifactId>-->
+        <!--                <version>5.9.1</version>-->
+        <!--            </dependency>-->
+        <!--            <dependency>-->
+        <!--                <groupId>org.slf4j</groupId>-->
+        <!--                <artifactId>slf4j-api</artifactId>-->
+        <!--                <version>1.7.36</version>-->
+        <!--            </dependency>-->
+        <!--            <dependency>-->
+        <!--                <groupId>org.junit.platform</groupId>-->
+        <!--                <artifactId>junit-platform-commons</artifactId>-->
+        <!--                <version>1.9.1</version>-->
+        <!--            </dependency>-->
+        <!--            <dependency>-->
+        <!--                <groupId>net.bytebuddy</groupId>-->
+        <!--                <artifactId>byte-buddy</artifactId>-->
+        <!--                <version>1.12.14</version>-->
+        <!--            </dependency>-->
+        <!--        </dependencies>-->
+        <!--    </dependencyManagement>-->
+
+        <!--    <dependencies>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework</groupId>-->
+        <!--            <artifactId>spring-webmvc</artifactId>-->
+        <!--            <version>${spring-context.version}</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework</groupId>-->
+        <!--            <artifactId>spring-web</artifactId>-->
+        <!--            <version>${spring-context.version}</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework</groupId>-->
+        <!--            <artifactId>spring-core</artifactId>-->
+        <!--            <version>${spring-context.version}</version>-->
+        <!--        </dependency>-->
+
+        <!--        &lt;!&ndash;        <dependency>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <groupId>org.springframework</groupId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <artifactId>spring-jdbc</artifactId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <version>${spring-context.version}</version>&ndash;&gt;-->
+        <!--        &lt;!&ndash;        </dependency>&ndash;&gt;-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>javax.servlet</groupId>-->
+        <!--            <artifactId>javax.servlet-api</artifactId>-->
+        <!--            <version>4.0.1</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.postgresql</groupId>-->
+        <!--            <artifactId>postgresql</artifactId>-->
+        <!--            <version>42.5.1</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>javax.servlet</groupId>-->
+        <!--            <artifactId>jstl</artifactId>-->
+        <!--            <version>1.2</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>jstl</groupId>-->
+        <!--            <artifactId>jstl</artifactId>-->
+        <!--            <version>1.2</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.projectlombok</groupId>-->
+        <!--            <artifactId>lombok</artifactId>-->
+        <!--            <version>1.18.24</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate.validator</groupId>-->
+        <!--            <artifactId>hibernate-validator</artifactId>-->
+        <!--            <version>6.0.13.Final</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.tomcat.embed</groupId>-->
+        <!--            <artifactId>tomcat-embed-core</artifactId>-->
+        <!--            <version>10.1.2</version>-->
+        <!--            <scope>compile</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.testcontainers</groupId>-->
+        <!--            <artifactId>testcontainers</artifactId>-->
+        <!--            <version>1.17.5</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.testcontainers</groupId>-->
+        <!--            <artifactId>junit-jupiter</artifactId>-->
+        <!--            <version>1.17.5</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.testcontainers</groupId>-->
+        <!--            <artifactId>postgresql</artifactId>-->
+        <!--            <version>1.17.5</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!--        &lt;!&ndash;        <dependency>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <groupId>org.apache.logging.log4j</groupId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <artifactId>log4j-core</artifactId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <version>2.19.0</version>&ndash;&gt;-->
+        <!--        &lt;!&ndash;        </dependency>&ndash;&gt;-->
+        <!--        &lt;!&ndash;        <dependency>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <groupId>org.apache.logging.log4j</groupId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <artifactId>log4j-api</artifactId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <version>2.19.0</version>&ndash;&gt;-->
+        <!--        &lt;!&ndash;        </dependency>&ndash;&gt;-->
+        <!--        &lt;!&ndash;        <dependency>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <groupId>org.apache.logging.log4j</groupId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <artifactId>log4j-slf4j-impl</artifactId>&ndash;&gt;-->
+        <!--        &lt;!&ndash;            <version>2.19.0</version>&ndash;&gt;-->
+        <!--        &lt;!&ndash;        </dependency>&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+        <!--            <artifactId>jackson-dataformat-yaml</artifactId>-->
+        <!--            <version>2.14.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>at.favre.lib</groupId>-->
+        <!--            <artifactId>bcrypt</artifactId>-->
+        <!--            <version>0.9.0</version>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.junit.jupiter</groupId>-->
+        <!--            <artifactId>junit-jupiter-engine</artifactId>-->
+        <!--            <version>5.9.0</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.assertj</groupId>-->
+        <!--            <artifactId>assertj-core</artifactId>-->
+        <!--            <version>3.23.1</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mockito</groupId>-->
+        <!--            <artifactId>mockito-core</artifactId>-->
+        <!--            <version>4.8.0</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mockito</groupId>-->
+        <!--            <artifactId>mockito-junit-jupiter</artifactId>-->
+        <!--            <version>4.8.0</version>-->
+        <!--            <scope>test</scope>-->
+        <!--            <exclusions>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>org.junit.jupiter</groupId>-->
+        <!--                    <artifactId>junit-jupiter-api</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-web</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-validation</artifactId>-->
+        <!--            <version>${spring-boot-starter-web.version}</version>-->
+        <!--        </dependency>-->
+        <!--    </dependencies>-->
+
+        <!--    <build>-->
+        <!--        <plugins>-->
+        <!--            <plugin>-->
+        <!--                <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                <artifactId>maven-war-plugin</artifactId>-->
+        <!--                <version>3.3.2</version>-->
+        <!--            </plugin>-->
+        <!--            <plugin>-->
+        <!--                <groupId>org.apache.maven.plugins</groupId>-->
+        <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+        <!--                <version>3.0.0-M7</version>-->
+        <!--            </plugin>-->
+        <!--            <plugin>-->
+        <!--                <groupId>com.github.spotbugs</groupId>-->
+        <!--                <artifactId>spotbugs-maven-plugin</artifactId>-->
+        <!--                <version>${spotbugs.maven.plugin.version}</version>-->
+        <!--                <configuration>-->
+        <!--                    <effort>Max</effort>-->
+        <!--                    <threshold>Low</threshold>-->
+        <!--                    <failOnError>true</failOnError>-->
+        <!--                    <includeFilterFiles>codequality/spotbug.xml</includeFilterFiles>-->
+        <!--                </configuration>-->
+        <!--                <dependencies>-->
+        <!--                    <dependency>-->
+        <!--                        <groupId>com.github.spotbugs</groupId>-->
+        <!--                        <artifactId>spotbugs</artifactId>-->
+        <!--                        <version>4.7.1</version>-->
+        <!--                    </dependency>-->
+        <!--                </dependencies>-->
+        <!--                <executions>-->
+        <!--                    <execution>-->
+        <!--                        <phase>package</phase>-->
+        <!--                        <goals>-->
+        <!--                            <goal>check</goal>-->
+        <!--                        </goals>-->
+        <!--                    </execution>-->
+        <!--                </executions>-->
+        <!--            </plugin>-->
+        <!--            &lt;!&ndash;            <plugin>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <artifactId>maven-enforcer-plugin</artifactId>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <version>1.4.1</version>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                <executions>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    <execution>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        <id>no-duplicate-declared-dependencies</id>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        <goals>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                            <goal>enforce</goal>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        </goals>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        <configuration>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                            <rules>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                <banDuplicatePomDependencyVersions/>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                <dependencyConvergence/>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                <bannedDependencies>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                    <excludes>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash; This should not exist as it will force SLF4J calls to be delegated to log4j &ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>org.slf4j:slf4j-log4j12</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash; This should not exist as it will force SLF4J calls to be delegated to jul &ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>org.slf4j:slf4j-jdk14</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash;                                        &lt;!&ndash; Ensure only the slf4j binding for logback is on the classpath &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>log4j:log4j</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        &lt;!&ndash;                                         As recommended from the slf4j guide, exclude commons-logging &ndash;&gt;&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                        <exclude>commons-logging:commons-logging</exclude>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                    </excludes>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                                </bannedDependencies>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                            </rules>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                        </configuration>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                    </execution>&ndash;&gt;-->
+        <!--            &lt;!&ndash;                </executions>&ndash;&gt;-->
+        <!--            &lt;!&ndash;            </plugin>&ndash;&gt;-->
+        <!--        </plugins>-->
+        <!--    </build>-->
+
+        <!--    <reporting>-->
+        <!--        <plugins>-->
+        <!--            <plugin>-->
+        <!--                <groupId>com.github.spotbugs</groupId>-->
+        <!--                <artifactId>spotbugs-maven-plugin</artifactId>-->
+        <!--                <version>4.7.1.1</version>-->
+        <!--                <configuration>-->
+        <!--                    <effort>Max</effort>-->
+        <!--                    <threshold>Low</threshold>-->
+        <!--                    <includeFilterFile>whizbang/lib-filter.xml</includeFilterFile>-->
+        <!--                </configuration>-->
+        <!--            </plugin>-->
+        <!--        </plugins>-->
+        <!--    </reporting>-->
+        <!--</project>-->

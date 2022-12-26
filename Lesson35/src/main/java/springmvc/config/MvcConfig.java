@@ -1,13 +1,13 @@
-package com.springmvc.config;
+package springmvc.config;
 
-import com.springmvc.interceptor.AuthInterceptor;
-import com.springmvc.session.AuthContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.handler.MappedInterceptor;
+import springmvc.interceptor.AuthInterceptor;
+import springmvc.session.AuthContext;
 
 @Configuration
 @RequiredArgsConstructor
@@ -18,9 +18,6 @@ public class MvcConfig implements WebMvcConfigurer {
   @Override
   public void addViewControllers(ViewControllerRegistry registry) {
     registry.addViewController("/accessDenied").setViewName("accessDenied");
-    registry.addViewController("/login").setViewName("login");
-    registry.addViewController("/registration").setViewName("registration");
-    registry.addViewController("/users").setViewName("users");
   }
 
   @Override

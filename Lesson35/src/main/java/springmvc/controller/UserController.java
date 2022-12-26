@@ -1,13 +1,13 @@
-package com.springmvc.controller;
+package springmvc.controller;
 
-import com.springmvc.dto.CreateUserDto;
-import com.springmvc.service.UserService;
 import lombok.RequiredArgsConstructor;
-import com.springmvc.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import springmvc.dto.CreateUserDto;
+import springmvc.model.User;
+import springmvc.service.UserService;
 
 import java.util.List;
 
@@ -24,5 +24,6 @@ public class UserController {
     model.addAttribute("users", users);
     model.addAttribute("dto", new CreateUserDto());
     return "users";
+
   }
 }

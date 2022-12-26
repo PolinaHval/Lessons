@@ -1,15 +1,15 @@
-package com.springmvc.interceptor;
+package springmvc.interceptor;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.servlet.HandlerInterceptor;
+import springmvc.session.AuthContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.springmvc.session.AuthContext;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.servlet.HandlerInterceptor;
 
 @RequiredArgsConstructor
 public class AuthInterceptor implements HandlerInterceptor {
-
   private final AuthContext authContext;
 
   @Override

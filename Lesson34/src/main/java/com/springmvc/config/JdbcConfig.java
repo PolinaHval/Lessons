@@ -12,8 +12,7 @@ import java.sql.SQLException;
 @Configuration
 public class JdbcConfig {
   @Bean
-  public Connection connection(final JdbcTemplate template) throws SQLException {
+  public Connection connection(JdbcTemplate template) throws SQLException {
     return template.getDataSource().getConnection();
   }
-
 }
