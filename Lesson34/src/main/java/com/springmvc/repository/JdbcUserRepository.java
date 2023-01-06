@@ -22,6 +22,7 @@ public class JdbcUserRepository implements UserRepository {
   private static final String FIND_USERS = "select login, password, id from users";
   private static final String CREATE_USER = "insert into users (login, password) values (?, ?)";
   private static final String GET_LOGIN_USER = "select login, password, id from users where login = ?";
+  private static final String GET_ID_USER = "select id, login, password from users where id = ?";
 
   @Override
   public List<User> findUsers() {
@@ -127,5 +128,15 @@ public class JdbcUserRepository implements UserRepository {
     } catch (SQLException e) {
       return new ArrayList<>();
     }
+  }
+
+  @Override
+  public Optional<User> getUserById(int userId) {
+    try (PreparedStatement statement = connection.prepareStatement(GET_ID_USER)) {
+      statement.setInt(1, userId);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return null;
   }
 }

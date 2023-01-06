@@ -8,42 +8,40 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import javax.validation.Valid;
-import java.util.List;
-
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/registration")
+@RequestMapping("/login")
 @RequiredArgsConstructor
-public class RegistrationController {
+public class LoginController {
 
-  private final UserService userService;
   private final AuthContext authContext;
+  private final UserService userService;
 
   @GetMapping
   protected String doGet(final Model model) {
     model.addAttribute("dto", new CreateUserDto());
-    return "registration";
+    return "login";
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-  protected String createUser(@Valid @ModelAttribute("dto") final CreateUserDto dto,
-                              final BindingResult result,
-                              final Model model) {
-    if (!result.hasErrors()) {
-      userService.createUser(dto.getLogin(), dto.getPassword());
-      authContext.setAuthorized(true);
+  protected String doPost(@Valid @ModelAttribute("dto") final CreateUserDto createUserDto) {
+    final String login = createUserDto.getLogin();
+    final String password = createUserDto.getPassword();
+    Optional<User> user = userService.getUser(login);
+    if (user.isPresent()) {
+      authContext.setLoggedInUserId(user.get().getUserId());
+      return "redirect:/users";
+    } else {
+      return "login";
     }
-
-    final List<User> users = userService.findUsers();
-    model.addAttribute("users", users);
-    return "users";
   }
+
+
 }

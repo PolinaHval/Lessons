@@ -6,5 +6,6 @@ import lombok.Data;
 public class AuthContext {
 
   private boolean authorized;
+  private int loggedInUserId;
 
 }

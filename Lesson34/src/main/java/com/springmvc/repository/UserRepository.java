@@ -17,4 +17,5 @@ public interface UserRepository {
   List<User> getOutcomingRequests(int senderId);
 
   List<User> getAllFriends(int userId);
+
 }
