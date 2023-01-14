@@ -41,7 +41,6 @@ public class RegistrationController {
       userService.createUser(dto.getLogin(), dto.getPassword());
       authContext.setAuthorized(true);
     }
-
     final List<User> users = userService.findUsers();
     model.addAttribute("users", users);
     return "users";

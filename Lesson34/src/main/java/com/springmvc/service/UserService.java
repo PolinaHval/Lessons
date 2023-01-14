@@ -37,16 +37,4 @@ public class UserService {
     return userRepository.getUser(login);
   }
 
-  public List<User> getUsersOfAllOutgoingRequests(int senderId) {
-    return userRepository.getOutcomingRequests(senderId);
-  }
-
-  public List<User> getAllFriends(int userId) {
-    return userRepository.getAllFriends(userId);
-  }
-
-  public List<User> getUsersOfAllIncomingRequests(int recipientId) {
-    return userRepository.getIncomingRequests(recipientId);
-  }
-
 }

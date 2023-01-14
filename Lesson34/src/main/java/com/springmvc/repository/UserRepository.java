@@ -12,10 +12,4 @@ public interface UserRepository {
 
   Optional<User> getUser(String login);
 
-  List<User> getIncomingRequests(int recipientId);
-
-  List<User> getOutcomingRequests(int senderId);
-
-  List<User> getAllFriends(int userId);
-
 }
