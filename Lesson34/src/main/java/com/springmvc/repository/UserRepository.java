@@ -12,4 +12,7 @@ public interface UserRepository {
 
   Optional<User> getUser(String login);
 
+//  List<User> getIncomingRequest(int recipientId);
+//
+//  List<User> getOutcomingRequest(int senderId);
 }
