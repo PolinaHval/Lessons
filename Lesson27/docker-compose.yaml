@@ -22,4 +22,4 @@ services:
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "social_network"
     ports:
-      - "15432:5432"
+      - "35432:5432"

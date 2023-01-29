@@ -11,7 +11,6 @@
 
     <artifactId>Lesson27</artifactId>
     <packaging>war</packaging>
-
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -56,6 +55,23 @@
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.9.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -140,58 +156,11 @@
             <artifactId>bcrypt</artifactId>
             <version>0.9.0</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>6.0.0</version>
+            <version>5.3.23</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>6.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>6.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.5.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>8.0.0.Final</version>
-        </dependency>
-
     </dependencies>
 
 
@@ -202,43 +171,43 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.maven.plugin.version}</version>
-                <configuration>
-                    <maxAllowedViolations>0</maxAllowedViolations>
-                    <failsOnError>true</failsOnError>
-                    <logViolationCountToConsole>true</logViolationCountToConsole>
-                    <consoleOutput>true</consoleOutput>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>${checkstyle.version}</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>checkstyle-validate</id>
-                        <phase>validate</phase>
-                        <configuration>
-                            <inputEncoding>UTF-8</inputEncoding>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                            <logViolationCountToConsole>true</logViolationCountToConsole>
-                        </configuration>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-surefire-plugin</artifactId>-->
+            <!--                <version>3.0.0-M7</version>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+            <!--                <version>${checkstyle.maven.plugin.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <maxAllowedViolations>0</maxAllowedViolations>-->
+            <!--                    <failsOnError>true</failsOnError>-->
+            <!--                    <logViolationCountToConsole>true</logViolationCountToConsole>-->
+            <!--                    <consoleOutput>true</consoleOutput>-->
+            <!--                </configuration>-->
+            <!--                <dependencies>-->
+            <!--                    <dependency>-->
+            <!--                        <groupId>com.puppycrawl.tools</groupId>-->
+            <!--                        <artifactId>checkstyle</artifactId>-->
+            <!--                        <version>${checkstyle.version}</version>-->
+            <!--                    </dependency>-->
+            <!--                </dependencies>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>checkstyle-validate</id>-->
+            <!--                        <phase>validate</phase>-->
+            <!--                        <configuration>-->
+            <!--                            <inputEncoding>UTF-8</inputEncoding>-->
+            <!--                            <includeTestSourceDirectory>true</includeTestSourceDirectory>-->
+            <!--                            <logViolationCountToConsole>true</logViolationCountToConsole>-->
+            <!--                        </configuration>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <!--            <plugin>-->
             <!--                <groupId>org.apache.maven.plugins</groupId>-->
             <!--                <artifactId>maven-pmd-plugin</artifactId>-->
@@ -262,63 +231,63 @@
             <!--                    </execution>-->
             <!--                </executions>-->
             <!--            </plugin>-->
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs.maven.plugin.version}</version>
-                <configuration>
-                    <effort>Max</effort>
-                    <threshold>Low</threshold>
-                    <failOnError>true</failOnError>
-                    <includeFilterFiles>codequality/spotbug.xml</includeFilterFiles>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.github.spotbugs</groupId>
-                        <artifactId>spotbugs</artifactId>
-                        <version>4.7.1</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>1.4.1</version>
-                <executions>
-                    <execution>
-                        <id>no-duplicate-declared-dependencies</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <banDuplicatePomDependencyVersions/>
-                                <dependencyConvergence/>
-                                <bannedDependencies>
-                                    <excludes>
-                                        <!-- This should not exist as it will force SLF4J calls to be delegated to log4j -->
-                                        <exclude>org.slf4j:slf4j-log4j12</exclude>
-                                        <!-- This should not exist as it will force SLF4J calls to be delegated to jul -->
-                                        <exclude>org.slf4j:slf4j-jdk14</exclude>
-                                        <!--                                        &lt;!&ndash; Ensure only the slf4j binding for logback is on the classpath &ndash;&gt;-->
-                                        <exclude>log4j:log4j</exclude>
-                                        <!--                                         As recommended from the slf4j guide, exclude commons-logging -->
-                                        <exclude>commons-logging:commons-logging</exclude>
-                                    </excludes>
-                                </bannedDependencies>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>com.github.spotbugs</groupId>-->
+            <!--                <artifactId>spotbugs-maven-plugin</artifactId>-->
+            <!--                <version>${spotbugs.maven.plugin.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <effort>Max</effort>-->
+            <!--                    <threshold>Low</threshold>-->
+            <!--                    <failOnError>true</failOnError>-->
+            <!--                    <includeFilterFiles>codequality/spotbug.xml</includeFilterFiles>-->
+            <!--                </configuration>-->
+            <!--                <dependencies>-->
+            <!--                    <dependency>-->
+            <!--                        <groupId>com.github.spotbugs</groupId>-->
+            <!--                        <artifactId>spotbugs</artifactId>-->
+            <!--                        <version>4.7.1</version>-->
+            <!--                    </dependency>-->
+            <!--                </dependencies>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>package</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-enforcer-plugin</artifactId>-->
+            <!--                <version>1.4.1</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>no-duplicate-declared-dependencies</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>enforce</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <rules>-->
+            <!--                                <banDuplicatePomDependencyVersions/>-->
+            <!--                                <dependencyConvergence/>-->
+            <!--                                <bannedDependencies>-->
+            <!--                                    <excludes>-->
+            <!--                                        &lt;!&ndash; This should not exist as it will force SLF4J calls to be delegated to log4j &ndash;&gt;-->
+            <!--                                        <exclude>org.slf4j:slf4j-log4j12</exclude>-->
+            <!--                                        &lt;!&ndash; This should not exist as it will force SLF4J calls to be delegated to jul &ndash;&gt;-->
+            <!--                                        <exclude>org.slf4j:slf4j-jdk14</exclude>-->
+            <!--                                        &lt;!&ndash;                                        &lt;!&ndash; Ensure only the slf4j binding for logback is on the classpath &ndash;&gt;&ndash;&gt;-->
+            <!--                                        <exclude>log4j:log4j</exclude>-->
+            <!--                                        &lt;!&ndash;                                         As recommended from the slf4j guide, exclude commons-logging &ndash;&gt;-->
+            <!--                                        <exclude>commons-logging:commons-logging</exclude>-->
+            <!--                                    </excludes>-->
+            <!--                                </bannedDependencies>-->
+            <!--                            </rules>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 

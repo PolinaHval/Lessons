@@ -3,8 +3,8 @@ package service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import model.User;
-import repository.UserRepository;
 import org.springframework.stereotype.Service;
+import repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

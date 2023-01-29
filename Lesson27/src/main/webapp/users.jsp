@@ -9,7 +9,7 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:include page="homePage.jsp"></jsp:include>
+<jsp:include page="views/homePage.jsp"></jsp:include>
 <div class="container">
     <div class="row" style="margin-top: 25px">
         <div class="card">

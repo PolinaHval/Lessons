@@ -4,36 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d302dd2c-de84-4cea-87a4-e9bedc73c4ab" name="Changes" comment="Lessons 27 and 32">
+    <list default="true" id="d302dd2c-de84-4cea-87a4-e9bedc73c4ab" name="Changes" comment="new dependencies">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/error.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/incomingRequests.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/outcomingRequests.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson32/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson32/src/main/java/spring/HelloSpring.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson32/src/main/java/spring/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/success.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/codequality/pmd-ruleset.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/codequality/pmd-ruleset.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/dev-env/postgres/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/dev-env/postgres/init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson27/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/docker-compose.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lesson27/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/java/listener/DependencyInitializationContextListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/java/listener/DependencyInitializationContextListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/java/repository/JdbcUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/java/repository/JdbcUserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/java/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/java/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lesson27/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/java/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/resources/lesson32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/resources/lesson32.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/WEB-INF/accessDenied.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/accessDenied.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/resources/flyway.conf" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/resources/flyway.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/accessDenied.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/friendList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/friendList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/homePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/homePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/registration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/success.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/friendList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson33/src/main/webapp/views/friendList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/success.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson35/src/main/resources/templates/success.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson27/src/main/webapp/views/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson32/src/main/resources/hello-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson33/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson33/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson33/src/main/java/com/springmvc/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson33/src/main/java/com/springmvc/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson33/src/main/java/com/springmvc/interceptor/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson33/src/main/java/com/springmvc/interceptor/AuthInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson33/src/main/resources/flyway.conf" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson33/src/main/resources/flyway.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson33/src/main/webapp/WEB-INF/spring-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson33/src/main/webapp/WEB-INF/spring-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson33/src/main/webapp/friendList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson27/src/main/webapp/friendList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson33/src/main/webapp/views/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson33/src/main/webapp/views/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson35/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson35/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson35/src/main/java/springmvc/exceptionmapping/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +45,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="spring-beans.schema" />
         <option value="Jsp File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -56,7 +58,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Lesson33" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,20 +96,29 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2HV9AroRma5THTOrPzS2idFDQB5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "/Users/admin/IdeaProjects/Lessons/Lesson33/src/main",
+    "last_opened_file_path": "/Users/admin/IdeaProjects/Lessons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -116,29 +127,31 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "spring.configuration.checksum": "b1bd28808d3ce91083474a0e43b458c0"
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.VCS",
+    "show.run.dashboard.notification": "false",
+    "spring.configuration.checksum": "1f7383248c8539b0256d9e19fed8691f"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
+      "mysql",
       "postgresql"
     ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Lesson33/src/main" />
-      <recent name="$PROJECT_DIR$/Lesson33" />
-      <recent name="$PROJECT_DIR$/Lesson32/src/main/java" />
-      <recent name="$PROJECT_DIR$/Lesson27/src/main/resources" />
-      <recent name="$PROJECT_DIR$/Lesson27/src/main/webapp" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lesson36" />
+      <recent name="$PROJECT_DIR$/Lesson36" />
+      <recent name="$PROJECT_DIR$/Lesson36/src/main/resources" />
+      <recent name="$PROJECT_DIR$/Lesson36/src/main/java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Lesson27/src/main/webapp/views" />
-      <recent name="$PROJECT_DIR$/Lesson27/src/main/webapp/WEB-INF" />
-      <recent name="$PROJECT_DIR$/Lesson33" />
-      <recent name="$PROJECT_DIR$/Lesson27/src/main/java/servlet/den" />
-      <recent name="$PROJECT_DIR$/Lesson27/src/main/webapp/css" />
+      <recent name="$PROJECT_DIR$/Lesson33/src/main/webapp/views" />
+      <recent name="$PROJECT_DIR$/Lesson36" />
+      <recent name="$PROJECT_DIR$/Lesson34/src/main/resources" />
+      <recent name="$PROJECT_DIR$/Lesson34/src/main/resources/db.migration" />
+      <recent name="$PROJECT_DIR$/Lesson34/Lesson35" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.springmvc.interceptor" />
@@ -151,13 +164,13 @@
       <recent name="listener" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Lesson27/docker-compose.yaml.tomcat: Compose Deployment">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="spring.Main" />
-      <module name="Lesson32" />
+  <component name="RunManager" selected="Spring Boot.NetworkApplication">
+    <configuration name="NetworkApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="Lesson34" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.springmvc.NetworkApplication" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="spring.*" />
+          <option name="PATTERN" value="com.springmvc.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,15 +178,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Lesson27/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="Lesson34/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="sourceFilePath" value="Lesson27/docker-compose.yaml" />
+          <option name="sourceFilePath" value="Lesson34/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="Lesson27/docker-compose.yaml.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="Lesson34/docker-compose.yaml.postgres: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
           <option name="services">
@@ -181,40 +194,31 @@
               <option value="postgres" />
             </list>
           </option>
-          <option name="sourceFilePath" value="Lesson27/docker-compose.yaml" />
+          <option name="sourceFilePath" value="Lesson34/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="Lesson27/docker-compose.yaml.tomcat: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="Lesson35/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="envFilePath" value="" />
-          <option name="services">
-            <list>
-              <option value="tomcat" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="Lesson27/docker-compose.yaml" />
+          <option name="sourceFilePath" value="Lesson35/docker-compose.yaml" />
         </settings>
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="Lesson28/docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="Lesson28/docker-compose.yaml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Docker.Lesson34/docker-compose.yaml.postgres: Compose Deployment" />
+      <item itemvalue="Docker.Lesson34/docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Docker.Lesson35/docker-compose.yaml: Compose Deployment" />
+      <item itemvalue="Spring Boot.NetworkApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.Lesson28/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Docker.Lesson27/docker-compose.yaml: Compose Deployment" />
-        <item itemvalue="Docker.Lesson27/docker-compose.yaml.tomcat: Compose Deployment" />
-        <item itemvalue="Docker.Lesson27/docker-compose.yaml.postgres: Compose Deployment" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Spring Boot.NetworkApplication" />
+        <item itemvalue="Docker.Lesson34/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.Lesson35/docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="Docker.Lesson34/docker-compose.yaml.postgres: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -241,6 +245,45 @@
       <workItem from="1668944391402" duration="32068000" />
       <workItem from="1669278304894" duration="47139000" />
       <workItem from="1670078828517" duration="6074000" />
+      <workItem from="1670340249871" duration="45803000" />
+      <workItem from="1671873442532" duration="3626000" />
+      <workItem from="1671878216961" duration="3414000" />
+      <workItem from="1671897684852" duration="262000" />
+      <workItem from="1671897969071" duration="9368000" />
+      <workItem from="1671910887358" duration="1349000" />
+      <workItem from="1671912478795" duration="5119000" />
+      <workItem from="1671919763524" duration="160000" />
+      <workItem from="1671919970276" duration="1475000" />
+      <workItem from="1671994916311" duration="565000" />
+      <workItem from="1671996307432" duration="515000" />
+      <workItem from="1671997017881" duration="1499000" />
+      <workItem from="1671998542692" duration="156000" />
+      <workItem from="1671998723744" duration="360000" />
+      <workItem from="1672077020488" duration="2365000" />
+      <workItem from="1672730109882" duration="857000" />
+      <workItem from="1672732307395" duration="365000" />
+      <workItem from="1672732924850" duration="194000" />
+      <workItem from="1672733204455" duration="1011000" />
+      <workItem from="1672751272267" duration="12775000" />
+      <workItem from="1672951080782" duration="13036000" />
+      <workItem from="1673188741795" duration="328000" />
+      <workItem from="1673189115454" duration="5575000" />
+      <workItem from="1673684147071" duration="582000" />
+      <workItem from="1673691689949" duration="520000" />
+      <workItem from="1673693904476" duration="448000" />
+      <workItem from="1673694369345" duration="1811000" />
+      <workItem from="1673890219264" duration="679000" />
+      <workItem from="1673891118155" duration="870000" />
+      <workItem from="1673893268185" duration="85000" />
+      <workItem from="1673893368800" duration="5556000" />
+      <workItem from="1674147727951" duration="1245000" />
+      <workItem from="1674581531764" duration="2556000" />
+      <workItem from="1674584283693" duration="1207000" />
+      <workItem from="1674823088856" duration="140000" />
+      <workItem from="1675006835101" duration="573000" />
+      <workItem from="1675007912828" duration="1929000" />
+      <workItem from="1675012108121" duration="1440000" />
+      <workItem from="1675019797463" duration="1803000" />
     </task>
     <task id="LOCAL-00001" summary="New Project and Lesson2 27">
       <created>1668361927025</created>
@@ -270,11 +313,73 @@
       <option name="project" value="LOCAL" />
       <updated>1669658611962</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="lessons 33 and 34">
+      <created>1670822066484</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670822066484</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Lesson 34 and 35">
+      <created>1672077734350</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672077734350</updated>
+    </task>
+    <task id="LOCAL-00007" summary=" error">
+      <created>1672993167427</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672993167427</updated>
+    </task>
+    <task id="LOCAL-00008" summary=" error">
+      <created>1673694769149</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673694769149</updated>
+    </task>
+    <task id="LOCAL-00009" summary="changes">
+      <created>1674075004500</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674075004500</updated>
+    </task>
+    <task id="LOCAL-00010" summary="new dependencies">
+      <created>1675012468345</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675012468345</updated>
+    </task>
+    <task id="LOCAL-00011" summary="new dependencies">
+      <created>1675020663447</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675020663447</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
+    <option featureType="dependencySupport" implementationName="java:javax.validation:validation-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -301,7 +406,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New Project and Lesson2 27" />
     <MESSAGE value="Lessons 27 and 32" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lessons 27 and 32" />
+    <MESSAGE value="lessons 33 and 34" />
+    <MESSAGE value="Lesson 34 and 35" />
+    <MESSAGE value=" error" />
+    <MESSAGE value="changes" />
+    <MESSAGE value="new dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="new dependencies" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
