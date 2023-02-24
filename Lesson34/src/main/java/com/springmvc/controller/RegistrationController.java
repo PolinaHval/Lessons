@@ -40,9 +40,11 @@ public class RegistrationController {
     if (!result.hasErrors()) {
       userService.createUser(dto.getLogin(), dto.getPassword());
       authContext.setAuthorized(true);
+      final List<User> users = userService.findUsers();
+      model.addAttribute("users", users);
+      return "redirect:/users";
+    } else {
+      return "registration";
     }
-    final List<User> users = userService.findUsers();
-    model.addAttribute("users", users);
-    return "users";
   }
 }

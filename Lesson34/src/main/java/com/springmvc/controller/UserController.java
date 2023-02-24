@@ -19,7 +19,7 @@ public class UserController {
   private final UserService userService;
 
   @GetMapping
-  protected String getUser(Model model) {
+  public String getUsers(final Model model) {
     final List<User> users = userService.findUsers();
     model.addAttribute("users", users);
     model.addAttribute("dto", new CreateUserDto());

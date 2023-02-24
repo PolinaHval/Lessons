@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,11 +32,10 @@ public class LoginController {
   }
 
   @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-  protected String doPost(@Valid @ModelAttribute("dto") final CreateUserDto createUserDto) {
+  protected String doPost(@Valid @ModelAttribute("dto") final CreateUserDto createUserDto, final BindingResult result) {
     final String login = createUserDto.getLogin();
-    final String password = createUserDto.getPassword();
     Optional<User> user = userService.getUser(login);
-    if (user.isPresent()) {
+    if (user.isPresent() && !result.hasErrors()) {
       authContext.setLoggedInUserId(user.get().getUserId());
       return "redirect:/users";
     } else {
