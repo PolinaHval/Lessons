@@ -4,6 +4,7 @@
     <title>Users</title>
 </head>
 <body>
+<div th:insert="homePage :: pages"></div>
 <div class="container">
     <div class="row" style="margin-top: 25px">
         <div class="card">
@@ -43,24 +44,24 @@
                                 Total Rows: [[${totalItems}]]
                             </div>
                             <div class="col-sm-2">
-                                <span th:each="i: ${#numbers.sequence(1,totalPages)}">
+                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
                                     <a th:if="${currentPage != i}"
-                                       th:href="@{'/page/'+ ${i}}">[[${i}]]</a>
+                                       th:href="@{'/users?page=' + ${i} + '&pageSize=' + ${pageSize}}">[[${i}]]</a>
                                     <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
                                 </span>
                             </div>
                             <div class="col-sm-1">
                                 <a th:if="${currentPage < totalPages}"
-                                   th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                                   th:href="@{'/users?page=' + ${currentPage + 1} + '&pageSize=' + ${pageSize}}">Next</a>
                                 <span th:unless="${currentPage < totalPages}">Next</span>
                             </div>
 
                             <div class="col-sm-1">
                                 <a th:if="${currentPage < totalPages}"
-                                   th:href="@{'/page/' + ${totalPages}}">Last</a>
+                                   th:href="@{'/users?page=' + ${totalPages} + '&pageSize=' + ${pageSize}}">Last</a>
                                 <span th:unless="${currentPage < totalPages}">Last</span>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
