@@ -22,7 +22,7 @@
                         <tbody>
                         <tr th:each="user: ${users}">
                             <td>
-                                <span th:text="${user.login}" class="text-primary"></span>
+                                <span th:text="${u}" class="text-primary"></span>
                                 <p th:if="${#fields.hasErrors('name')}">Invalid Login</p>
                             </td>
                             <td>

@@ -4,64 +4,80 @@
     <title>Users</title>
 </head>
 <body>
-<div th:insert="homePage :: pages"></div>
+<div th:fragment="pages">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand m-3" href="#"> Tender.by</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/search"> Поиск</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"> Тарифы</a>
+                </li>
+            </ul>
+            <p th:text="${user.organization.shortName}"></p>&nbsp;
+            <p th:text="${user.lastName}"></p>&nbsp;
+            <p th:text="${user.name}"></p>
+            <a class="btn btn-primary m-3" href="/homePage" role="button">Личный кабиент</a>
+            <a class="btn btn-secondary btn-sm m-3" href="/login" role="button">Выход</a>
+        </div>
+    </nav>
+</div>
 <div class="container">
+    <a class="btn btn-primary m-4" href="/addUser" role="button">Добавить пользователя</a>
     <div class="row" style="margin-top: 25px">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <h3>Users</h3>
+                    <h3>Пользователи организации</h3>
                 </div>
-                <!--                <c:set var="loggedUserId" value='<%= session.getAttribute("loggedInUserId") %>'/>-->
                 <div class="card-text">
                     <table class="table">
                         <tr>
-                            <th>Name</th>
-                            <th>Password</th>
-                            <th>Add friend</th>
+                            <th>Логин</th>
+                            <th>Фамилия</th>
+                            <th>Отчество</th>
+                            <th>Отчество</th>
+                            <th>Адрес почты</th>
+                            <th>Телефон</th>
                         </tr>
                         <tbody>
                         <tr th:each="user: ${users}">
                             <td>
-                                <span th:text="${user.login}" class="text-primary"></span>
+                                <span th:text="${user.login}"/>
                             </td>
                             <td>
-                                <span th:text="${user.password}" class="text-primary"></span>
+                                <span th:text="${user.lastName}"/>
                             </td>
                             <td>
-                                <form action="friendRequest" method="post">
-                                    <input type="hidden" name="requestFriendId" value="${user.userId}"/>
-                                    <button type="submit" class="btn btn-primary" name="button"> Add friend
-                                    </button>
-                                </form>
+                                <span th:text="${user.name}"/>
+                            </td>
+                            <td>
+                                <span th:text="${user.patronymic}"/>
+                            </td>
+                            <td>
+                                <span th:text="${user.email}"/>
+                            </td>
+                            <td>
+                                <span th:text="${user.phone}"/>
+                            </td>
+                            <td class="col-1">
+                                <div th:if="${@authContext.getLoggedInUserId() != user.id}">
+                                    <form th:method="delete"
+                                          action="#"
+                                          th:action="@{'/users/{id}'(id=${user.id})}">
+                                        <button type="submit" class="btn btn-primary" name="button">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <div th:if="${totalPages > 1}">
-                        <div class="row col-sm-10">
-                            <div class="col-sm-2">
-                                Total Rows: [[${totalItems}]]
-                            </div>
-                            <div class="col-sm-2">
-                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                                    <a th:if="${currentPage != i}"
-                                       th:href="@{'/users?page=' + ${i} + '&pageSize=' + ${pageSize}}">[[${i}]]</a>
-                                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
-                                </span>
-                            </div>
-                            <div class="col-sm-1">
-                                <a th:if="${currentPage < totalPages}"
-                                   th:href="@{'/users?page=' + ${currentPage + 1} + '&pageSize=' + ${pageSize}}">Next</a>
-                                <span th:unless="${currentPage < totalPages}">Next</span>
-                            </div>
-
-                            <div class="col-sm-1">
-                                <a th:if="${currentPage < totalPages}"
-                                   th:href="@{'/users?page=' + ${totalPages} + '&pageSize=' + ${pageSize}}">Last</a>
-                                <span th:unless="${currentPage < totalPages}">Last</span>
-                            </div>
-                        </div>
                 </div>
             </div>
         </div>

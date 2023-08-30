@@ -2,6 +2,7 @@ package springmvc.interceptor;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.HandlerInterceptor;
 import springmvc.session.AuthContext;
 
@@ -14,11 +15,12 @@ public class AuthInterceptor implements HandlerInterceptor {
   private final AuthContext authContext;
 
   @Override
-  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    if (authContext.isAuthorized()) {
+  public boolean preHandle(@org.springframework.lang.NonNull HttpServletRequest request, @org.springframework.lang.NonNull HttpServletResponse response,
+                           @NonNull Object handler) throws Exception {
+    if (authContext.getLoggedInUserId() != null || authContext.getOrganizationId() != null) {
       return true;
     }
-    response.sendRedirect("access-denied");
+    response.sendRedirect("accessDenied");
     return false;
   }
 }

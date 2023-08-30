@@ -2,44 +2,60 @@ package springmvc.service;
 
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import springmvc.error.UserAlreadyExistException;
+import springmvc.model.Organization;
 import springmvc.model.User;
+
 import springmvc.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
   private final UserRepository userRepository;
+  private final OrganizationService organizationService;
 
-  public Page<User> findPaginated(int pageNo, int pageSize) {
-    Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-    return userRepository.findAll(pageable);
+  private final HashPassword hashPassword;
+
+  public String hashingPassword(String password) {
+    return hashPassword.hashingPassword(password);
   }
 
-  public List<User> findUsers() {
-    return userRepository.findAll();
+  public boolean validatePassword(String password, String hashedPassword) {
+    return hashPassword.validatePassword(password, hashedPassword);
   }
 
-  public void createUser(String login, String password, int userId) {
-    if (userRepository.findByLogin(login).isPresent()) {
-      throw new RuntimeException("User already exists");
+  public User createUser(String login, String password, String name, String lastname, String patronymic,
+                         String email, int phone, String role, Organization organization) {
+
+    if (userRepository.findByEmail(email).isPresent()) {
+      throw new UserAlreadyExistException(" Пользователь с указанной почтой существует");
     }
-    if (password.isEmpty()) {
-      throw new RuntimeException("User password is empty");
-    }
-    final User user = new User(login, password);
-    userRepository.save(user);
+
+    final User user = new User(login, hashingPassword(password), name, lastname, patronymic, email, phone, role, organization);
+    return userRepository.save(user);
   }
 
-  public Optional<User> getUser(String login) {
+  public Optional<User> findUser(String login) {
     return userRepository.findByLogin(login);
   }
 
+
+  public User getUserById(long userId) {
+    return userRepository.findUserById(userId);
+  }
+
+  public List<User> getUsers(long organizationId) {
+    return organizationService.findOrganizationById(organizationId).orElseThrow().getUsers();
+  }
+
+  public void deleteUser(User user) {
+    userRepository.delete(user);
+  }
 }
