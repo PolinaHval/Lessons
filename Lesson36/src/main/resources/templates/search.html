@@ -75,6 +75,13 @@
                                 <td>
                                     <span th:text="${tender.organizationTenders.shortName}"/>
                                 </td>
+                                <td class="col-1">
+                                    <form th:method="get"
+                                          action="#"
+                                          th:action="@{'/tender/{tenderId}'(tenderId=${tender.id})}">
+                                        <button type="submit" class="btn btn-primary" name="button">Подробнее</button>
+                                    </form>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
